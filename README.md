@@ -1,4 +1,4 @@
-js-geoext
+Geoserver
 =========
 
-the geoext javascript libraries required by geonetwork
+The geoserver sub-module for geonetwork.  It builds a custom geoserver
