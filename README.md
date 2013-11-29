@@ -30,7 +30,7 @@ Upgrade of GeoServer
     $ cp -R $HOME/.m2/repository/org/geoserver/charts-plugin/2.4.2 GN_SOURCES_PATH/maven_repo/org/geoserver/charts-plugin
 ```
 
-7. Unzip ``geoserver.war`` and copy the file ``WEB-INF\web.xml`` to ``GN_SOURCES_PATH/geoserver/src/main/webapp/WEB-INF/web.xml``, adding this section for the data directory:
+7. Unzip ``geoserver.war`` and copy the file ``WEB-INF\web.xml`` to ``GN_SOURCES_PATH/geoserver/src/main/webapp/WEB-INF/web.xml``, adding the following section for the data directory.
 ```
    <context-param>
       <param-name>GEOSERVER_DATA_DIR</param-name>
@@ -38,7 +38,7 @@ Upgrade of GeoServer
    </context-param>
 ``` 
 
-8. Update the version of GeoServer in the pom.xml
+8. Update the version of GeoServer in the ``pom.xml``.
 ```
     <geoserver.version>2.4.2</geoserver.version>
 ```
