@@ -11,6 +11,7 @@
   <properties>
     <geoserver.version>2.4.2</geoserver.version>
     <styler.version>2.1.1</styler.version>
+    <rootProjectDir>${basedir}/..</rootProjectDir>
   </properties>
   
   <!-- =========================================================== -->
@@ -99,5 +100,10 @@ Data directory is now included to allow simpler deployment - see web/src/main/we
       </plugin>	
    </plugins>
   </build>
-
+  <distributionManagement>
+    <site>
+      <id>Maven generated site and reports</id>
+      <url>file://${rootProjectDir}/target/site/${artifactId}</url>
+    </site>
+  </distributionManagement>
 </project>
