@@ -7,7 +7,10 @@
     <artifactId>geonetwork</artifactId>
     <version>2.11.0-SNAPSHOT</version>
   </parent>
-  
+
+  <properties>
+    <rootProjectDir>${basedir}/..</rootProjectDir>
+  </properties>
   
   <!-- =========================================================== -->
   <!--     Module Description                                      -->
@@ -31,7 +34,7 @@ Data directory is now included to allow simpler deployment - see web/src/main/we
     </license>
   </licenses>
 
-	<dependencies>
+  <dependencies>
     <dependency>
       <groupId>org.geoserver</groupId>
       <artifactId>geoserver</artifactId>
@@ -44,19 +47,19 @@ Data directory is now included to allow simpler deployment - see web/src/main/we
       <version>2.1.1</version>
       <type>pom</type>
     </dependency>
-		<dependency>
-			<groupId>org.geoserver</groupId>
-			<artifactId>styler</artifactId>
+    <dependency>
+	  <groupId>org.geoserver</groupId>
+	  <artifactId>styler</artifactId>
       <version>2.1.1</version>
       <type>zip</type>
     </dependency>
-		<dependency>
-			<groupId>org.geoserver</groupId>
-			<artifactId>charts-plugin</artifactId>
+	<dependency>
+	  <groupId>org.geoserver</groupId>
+	  <artifactId>charts-plugin</artifactId>
       <version>2.1.1</version>
       <type>zip</type>
     </dependency>
-	</dependencies>
+  </dependencies>
 	
   <build>
     <plugins>
@@ -96,4 +99,10 @@ Data directory is now included to allow simpler deployment - see web/src/main/we
    </plugins>
   </build>
 
+  <distributionManagement>
+    <site>
+      <id>Maven generated site and reports</id>
+      <url>file://${rootProjectDir}/target/site/${artifactId}</url>
+    </site>
+  </distributionManagement>
 </project>
