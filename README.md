@@ -11,7 +11,7 @@ Upgrade of GeoServer
 2. Unzip the file and deploy the war package in the local maven repository (set the value of ``-Dversion`` to the GeoServer version).
 ```
     $ unzip geoserver-2.4.2-war.zip 
-    $ mvn install:install-file -DgroupId=org.geoserver -DartifactId=geoserver -Dversion=2.4.2 -Dpackaging=war -Dfile=geoserver.war
+    $ mvn install:install-file -DgroupId=org.geoserver -DartifactId=geoserver -Dversion=2.4.2 -Dpackaging=war -DcreateChecksum=true -Dfile=geoserver.war 
 ```
 3. Copy the artifact from your local maven repository to ``maven_repo`` module.
 ```
@@ -22,7 +22,7 @@ Upgrade of GeoServer
 
 5. Deploy the chart plugin in the local maven repository (set the value of ``-Dversion`` to the GeoServer version):
 ```
-    $ mvn install:install-file -DgroupId=org.geoserver -DartifactId=charts-plugin -Dversion=2.4.2 -Dpackaging=zip -Dfile=geoserver-2.4.2-charts-plugin.zip
+    $ mvn install:install-file -DgroupId=org.geoserver -DartifactId=charts-plugin -Dversion=2.4.2 -Dpackaging=zip -DcreateChecksum=true -Dfile=geoserver-2.4.2-charts-plugin.zip
 ```
 
 6. Copy the artifact from your local maven repository to ``maven_repo`` module.
