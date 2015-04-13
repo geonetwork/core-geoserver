@@ -104,7 +104,7 @@ Data directory is now included to allow simpler deployment - see web/src/main/we
   <distributionManagement>
     <site>
       <id>Maven generated site and reports</id>
-      <url>file://${rootProjectDir}/target/site/${artifactId}</url>
+      <url>file://${rootProjectDir}/target/site/${project.artifactId}</url>
     </site>
   </distributionManagement>
 </project>
