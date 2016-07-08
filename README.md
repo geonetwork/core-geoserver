@@ -6,7 +6,7 @@ The geoserver sub-module for geonetwork.  It builds a custom geoserver.
 Upgrade of GeoServer
 --------------------
 
-* Choose a version
+* Choose a version http://geoserver.org/
 
 * Update the version of GeoServer in the ``pom.xml``.
 ```
@@ -35,18 +35,25 @@ cd ..
 rm -fr geoserver-$GS_VERSION-war
 
 # Copy the artifact from your local maven repository to ``maven_repo`` module.
-
 cp -R $HOME/.m2/repository/org/geoserver/geoserver/$GS_VERSION $GN_SOURCE/core-maven-repo/org/geoserver/geoserver
 
+# Publish to github maven repo
+cd core-maven-repo
+git add .
+git commit -m "Add GeoServer version $GS_VERSION."
+git push origin master
+
+```
+
+
+* Configure GeoServer data dir
+```
 # Configure GeoServer with custom data dir
 cd  $GN_SOURCE/core-maven-repo/org/geoserver/geoserver/$GS_VERSION
 unzip geoserver-$GS_VERSION.war -d war
 
-```
+# Edit the WEB-INF/web.xml file to add the data dir configuration
 
-
-* Unzip ``geoserver.war`` and copy the file ``WEB-INF\web.xml`` to ``GN_SOURCES_PATH/geoserver/src/main/webapp/WEB-INF/web.xml``, adding the following section for the data directory.
-```
    <context-param>
       <param-name>GEOSERVER_DATA_DIR</param-name>
       <param-value>../geonetwork/data/geoserver_data</param-value>
