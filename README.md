@@ -6,39 +6,49 @@ The geoserver sub-module for geonetwork.  It builds a custom geoserver.
 Upgrade of GeoServer
 --------------------
 
-1. Download the latest stable version of GeoServer war package (ex. ``geoserver-2.4.2-war.zip``).
+* Choose a version
 
-2. Unzip the file and deploy the war package in the local maven repository (set the value of ``-Dversion`` to the GeoServer version).
+* Update the version of GeoServer in the ``pom.xml``.
 ```
-    $ unzip geoserver-2.4.2-war.zip 
-    $ mvn install:install-file -DgroupId=org.geoserver -DartifactId=geoserver -Dversion=2.4.2 -Dpackaging=war -DcreateChecksum=true -Dfile=geoserver.war 
-```
-3. Copy the artifact from your local maven repository to ``maven_repo`` module.
-```
-    $ cp -R $HOME/.m2/repository/org/geoserver/geoserver/2.4.2 GN_SOURCES_PATH/maven_repo/org/geoserver/geoserver
+    <geoserver.version>2.9.0</geoserver.version>
 ```
 
-4. Download the latest stable version of GeoServer chart plugin (ex. ``geoserver-2.4.2-charts-plugin.zip``).
+* Then:
+```
+export GS_VERSION=2.9.0
+export GN_SOURCE=/data/dev/gn
 
-5. Deploy the chart plugin in the local maven repository (set the value of ``-Dversion`` to the GeoServer version):
-```
-    $ mvn install:install-file -DgroupId=org.geoserver -DartifactId=charts-plugin -Dversion=2.4.2 -Dpackaging=zip -DcreateChecksum=true -Dfile=geoserver-2.4.2-charts-plugin.zip
+cd $GN_SOURCE
+git clone git@github.com:geonetwork/core-maven-repo.git
+
+# Download the latest stable version of GeoServer war package
+mkdir geoserver-$GS_VERSION-war
+cd geoserver-$GS_VERSION-war
+wget http://pilotfiber.dl.sourceforge.net/project/geoserver/GeoServer/$GS_VERSION/geoserver-$GS_VERSION-war.zip
+
+#  Unzip the file 
+unzip geoserver-$GS_VERSION-war.zip 
+
+# Deploy the war package in the local maven repository
+mvn install:install-file -DgroupId=org.geoserver -DartifactId=geoserver -Dversion=$GS_VERSION -Dpackaging=war -DcreateChecksum=true -Dfile=geoserver.war 
+cd ..
+rm -fr geoserver-$GS_VERSION-war
+
+# Copy the artifact from your local maven repository to ``maven_repo`` module.
+
+cp -R $HOME/.m2/repository/org/geoserver/geoserver/$GS_VERSION $GN_SOURCE/core-maven-repo/org/geoserver/geoserver
+
+# Configure GeoServer with custom data dir
+cd  $GN_SOURCE/core-maven-repo/org/geoserver/geoserver/$GS_VERSION
+unzip geoserver-$GS_VERSION.war -d war
+
 ```
 
-6. Copy the artifact from your local maven repository to ``maven_repo`` module.
-```
-    $ cp -R $HOME/.m2/repository/org/geoserver/charts-plugin/2.4.2 GN_SOURCES_PATH/maven_repo/org/geoserver/charts-plugin
-```
 
-7. Unzip ``geoserver.war`` and copy the file ``WEB-INF\web.xml`` to ``GN_SOURCES_PATH/geoserver/src/main/webapp/WEB-INF/web.xml``, adding the following section for the data directory.
+* Unzip ``geoserver.war`` and copy the file ``WEB-INF\web.xml`` to ``GN_SOURCES_PATH/geoserver/src/main/webapp/WEB-INF/web.xml``, adding the following section for the data directory.
 ```
    <context-param>
       <param-name>GEOSERVER_DATA_DIR</param-name>
       <param-value>../geonetwork/data/geoserver_data</param-value>
    </context-param>
 ``` 
-
-8. Update the version of GeoServer in the ``pom.xml``.
-```
-    <geoserver.version>2.4.2</geoserver.version>
-```
