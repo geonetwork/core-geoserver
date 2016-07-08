@@ -8,12 +8,7 @@ Upgrade of GeoServer
 
 * Choose a version http://geoserver.org/
 
-* Update the version of GeoServer in the ``pom.xml``.
-```
-    <geoserver.version>2.9.0</geoserver.version>
-```
-
-* Then:
+* Then add this version to the core-maven-repo:
 ```
 export GS_VERSION=2.9.0
 export GN_SOURCE=/data/dev/gn
@@ -46,16 +41,23 @@ git push origin master
 ```
 
 
-* Configure GeoServer data dir
+* Then update GeoNetwork to use this new version:
 ```
-# Configure GeoServer with custom data dir
-cd  $GN_SOURCE/core-maven-repo/org/geoserver/geoserver/$GS_VERSION
-unzip geoserver-$GS_VERSION.war -d war
 
-# Edit the WEB-INF/web.xml file to add the data dir configuration
+cd ../develop/geoserver
 
+# Update pom.xml to point to the new version
+vi pom.xml
+    <geoserver.version>2.9.0</geoserver.version>
+    
+# Configure GeoServer data dir
+vi src/main/webapp/WEB-INF/web.xml
+# Update the web.xml with the one from the new version and update the GEOSERVER_DATA_DIR
    <context-param>
       <param-name>GEOSERVER_DATA_DIR</param-name>
       <param-value>../geonetwork/data/geoserver_data</param-value>
    </context-param>
+
+# (Optional but recommended ?)
+# Update the data dir with the default one
 ``` 
