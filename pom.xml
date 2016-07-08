@@ -3,18 +3,16 @@
 
   <modelVersion>4.0.0</modelVersion>
 
+  <groupId>org.geonetwork-opensource</groupId>
+  <artifactId>geoserver</artifactId>
+  <version>2.9.0</version>
+
   <properties>
     <geoserver.version>2.9.0</geoserver.version>
     <styler.version>2.1.1</styler.version>
     <rootProjectDir>${basedir}/..</rootProjectDir>
   </properties>
 
-  <!-- =========================================================== -->
-  <!--     Module Description                                      -->
-  <!-- =========================================================== -->
-  <groupId>org.geonetwork-opensource</groupId>
-  <artifactId>geoserver</artifactId>
-  <version>2.9.0</version>
   <name>GeoServer module</name>
   <description>GeoServer for GeoNetwork.
     All included files are official versions downloaded from http://geoserver.org/
