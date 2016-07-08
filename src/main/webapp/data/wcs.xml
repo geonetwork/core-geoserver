@@ -1,9 +1,9 @@
 <wcs>
   <id>wcs</id>
-  <enabled>false</enabled>
+  <enabled>true</enabled>
   <name>WCS</name>
   <title>Web Coverage Service</title>
-  <maintainer>http://jira.codehaus.org/secure/BrowseProject.jspa?id=10311</maintainer>
+  <maintainer>http://geoserver.org/comm</maintainer>
   <abstrct>This server implements the WCS specification 1.0 and 1.1.1, it&apos;s reference implementation of WCS 1.1.1. All layers published by this service are available on WMS also.
      </abstrct>
   <accessConstraints>NONE</accessConstraints>
@@ -15,12 +15,14 @@
     <org.geotools.util.Version>
       <version>1.1.1</version>
     </org.geotools.util.Version>
+    <org.geotools.util.Version>
+      <version>2.0.1</version>
+    </org.geotools.util.Version>
   </versions>
   <keywords>
     <string>WCS</string>
     <string>WMS</string>
     <string>GEOSERVER</string>
-    <string>GeoNetwork</string>
   </keywords>
   <metadataLink>
     <type>undef</type>
@@ -28,8 +30,11 @@
     <metadataType>other</metadataType>
   </metadataLink>
   <citeCompliant>false</citeCompliant>
-  <onlineResource>http://geonetwork-opensource.org</onlineResource>
+  <onlineResource>http://geoserver.org</onlineResource>
   <schemaBaseURL>http://schemas.opengis.net</schemaBaseURL>
   <verbose>false</verbose>
   <gmlPrefixing>false</gmlPrefixing>
+  <latLon>false</latLon>
+  <maxInputMemory>0</maxInputMemory>
+  <maxOutputMemory>0</maxOutputMemory>
 </wcs>
